@@ -83,7 +83,7 @@ header ul li a:hover{
 	height: 100%;
 	left: 0;
 	top: 0;
-	background: url("img/bg.jpg") no-repeat center;
+	background: url("Images/backg.jpg") no-repeat center;
 	background-size: cover;
 	filter: blur(50px);
 	z-index: -1;
@@ -180,7 +180,7 @@ textarea{
 }
 
 main{
-    background: url(../Images/ug.png);
+    background: url(Images/ug.png);
 }
 
 

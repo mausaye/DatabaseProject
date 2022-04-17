@@ -8,6 +8,7 @@
     <link rel="stylesheet" href='help.css'>
     <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="server.js"></script>
 </head>
 <title>Fill Out Request Information </title>
 
@@ -66,16 +67,31 @@
                             </p>
                     <button class="btn" type="submit" >Submit</button>
                     <script>
-            
+                        
+                        
                         function handleSubmit(event) {
                                 //alert("hi"); ---checked this to get data
                                 event.preventDefault();
 
                                 const data = new FormData(event.target);
-
+                                
                                 const value = Object.fromEntries(data.entries());
+                                const jsonOb = {
+                                        type: "SELECT",
+                                        data: { 
+                                            table: "DONOR",
+                                            blood: data.entries().blood,
+                                            email: data.entries().email,
+                                            name: data.entries().name,
+                                            phone: data.entries().phone,
+                                            rh: data.entries().rh
+                                        },
+                                        conditions: ""
+                                }
 
                                 console.log({ value });
+
+                                sendSubmitRequest(jsonOb);
                             }
 
                                 const form = document.querySelector('form');
