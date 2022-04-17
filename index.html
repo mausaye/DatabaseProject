@@ -5,132 +5,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href='./Images/bb_logo(black)_ccexpress.png' type="image/png" >
-    <link rel="stylesheet" href='index.css'>
-    <link rel="stylesheet" href='https://fontawesome.com/v4.7.0/icon/bars'>
+    <link rel="stylesheet" href='help.css'>
+    <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./frontendconnection.js"></script>
 </head>
-
-<title>BLOOD DBMS</title>
-<div class="preloader">
-    <img src="pre-loader.svg" alt="spinner">
-</div>
+<title>Fill Out Request Information </title>
 
 <body>
-    <!--Scroll to top button-->
-    <button onclick="topFunction()" id="myBtn" class="fas fa-arrow-up"></button>
-    <!-- Home Page -->
+
     <header>
-        <video autoplay muted loop plays-inline id="homevideo">
-            <source src="./video/homevideo1.mp4" type="video/mp4">
-        </video>
-        <div id="logo"> <a href="index.html"><img src="./Images/bb_logo(black)_ccexpress.png"></a>
-        </div>
-        <div id="nav">
-            <div class="header-list" id="headerl">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
+        <nav>
+            <div class="header-logo"><img src="./Images/bb_logo(black).png"></div>
+            <div class="header-list">
                 <ul>
-                    <li><a href="donate.html" target="_blank">Donate</a></li>
-                    <li><a href="help.html" target="_blank">Request Blood</a></li>
+                    <li><a href="help.html">Request Blood</a></li>
+                    <li><a href="donate.html">Donate</a></li>
+                    <li><a href="index.html#vol-sect"> Our Volunteers!</a></li>
                 </ul>
             </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </div>
-        <div class="text-box">
-            <h1> Start </h1>
-            <h1>Saving Lives </h1>
-            <p>Become a donor or request for blood And help save lives</p>
-            <a href='Register.html' class="hero-btn" target="_blank">Register</a>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href='./Images/bb_logo(black)_ccexpress.png' type="image/png" >
-    <link rel="stylesheet" href='index.css'>
-    <link rel="stylesheet" href='https://fontawesome.com/v4.7.0/icon/bars'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="./frontendconnection.js"></script>
-</head>
-
-<title>BLOOD DBMS</title>
-<div class="preloader">
-    <img src="pre-loader.svg" alt="spinner">
-</div>
-
-<body>
-    <!--Scroll to top button-->
-    <button onclick="topFunction()" id="myBtn" class="fas fa-arrow-up"></button>
-    <!-- Home Page -->
-    <header>
-        <video autoplay muted loop plays-inline id="homevideo">
-            <source src="./video/homevideo1.mp4" type="video/mp4">
-        </video>
-        <div id="logo"> <a href="index.html"><img src="./Images/bb_logo(black)_ccexpress.png"></a>
-        </div>
-        <div id="nav">
-            <div class="header-list" id="headerl">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                <ul>
-                    <li><a href="donate.html" target="_blank">Donate</a></li>
-                    <li><a href="help.html" target="_blank">Request Blood</a></li>
-                </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </div>
-        <div class="text-box">
-            <h1> Start </h1>
-            <h1>Saving Lives </h1>
-            <p>Become a donor or request for blood And help save lives</p>
-            <a href='Register.html' class="hero-btn" target="_blank">Register</a>
-        </div>
+        </nav>
     </header>
 
 
 
+    <main>
+        <form action=" ">
+            <div class="container">
+                <div class="contact-box">
+                    <div class="left"></div>
+                    <div class="right">
+                        <h2>Fill out Blood Request Info Below:</h2>
 
-    <!--Javascript for pre-loader-->
+                        <input type="text" id="name" class="field" name="name" placeholder="Your Name">
+                        <input type="text" id="email" class="field" name="email" placeholder="Your Email">
+                        <input type="text" id="phone" class="field" name="phone" placeholder="Phone">
+                        <textarea placeholder="Message" id="message" class="field"></textarea>
+                        <div class="row">
+                            <div class="col s12 m4 l4">
+                                <label class="field">Blood Group:</label>
+                                <div>
+                                    <select class="field" name="blood" id="bloodtype" class="validate" required>
+                                <option value="">Select</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="O">O</option>
+                                <option value="AB">AB</option>
+                            </select>
+                                </div>
 
-    <script>
-        const preloader = document.querySelector('.preloader');
-        const fadeEffect = setInterval(() => {
-            if (!preloader.style.opacity) {
-                preloader.style.opacity = 1;
-            }
-            if (preloader.style.opacity > 0) {
-                preloader.style.opacity -= 1.5;
-            } else {
-                clearInterval(fadeEffect);
-            }
-        }, 1500);
-        window.addEventListener('load', fadeEffect);
-    </script>
-    <!--js for scroll to top-->
-    <script src="up.js"></script>
+                                <label class="field">Rh Factor:</label>
+                                <p class=" white-text">
+                                    <label>
+                                    <input class="with-gap white-text white" id= "postive" value="+" name="rh" type="radio" required />
+                                    <span class="white-text">Positive</span>
+                                </label>
+                                    <label>
+                                    <input class="with-gap white-text white" id ="negative" value="-" name="rh" type="radio" required />
+                                    <span class="white-text">Negative</span>
+                                </label>
+                                </p>
+                                <button class="btn" type="submit">Submit</button>
+                                <script src="submit.js"></script>
+                            </div>
+                        </div>
+                    </div>
+        </form>
+    </main>
 
-    <!--JAVASCRIPT FOR TOGGLE MENU -->
-    <script>
-        var headerl = document.getElementById("headerl");
-
-        function showMenu() {
-            headerl.style.right = "0";
-        }
-
-        function hideMenu() {
-            headerl.style.right = "-210px";
-        }
-    </script>
-
-
-    <!--js for scroll effects-->
-    <script src="scroll.js"></script>
 
 </body>
 
