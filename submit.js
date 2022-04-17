@@ -1,4 +1,15 @@
 function handleSubmit(event) {
+
+    connection.onopen = function(){
+        /*Send a small message to the console once the connection is established */
+            console.log('Connection open!');
+        }
+
+        connection.onerror = function(error){
+            console.log('Error detected: ' + error);
+        }
+
+
     //alert("hi"); ---checked this to get data
     event.preventDefault();
 
@@ -9,7 +20,7 @@ function handleSubmit(event) {
         type: "INSERT",
         data: { 
             table: "DONOR",
-            firstname: data.entries()[firstname],
+            firstname: data.entries().firstname,
             lastname: data.entries().lastname,
             phone: data.entries().phone,
             iron_count: data.entries().iron_count,
@@ -26,8 +37,6 @@ console.log({
     console.log({
         jsonOb
     });
-
-     insertDonor(jsonOb);
 }
 
 
