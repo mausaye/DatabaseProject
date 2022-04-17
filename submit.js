@@ -13,6 +13,7 @@ function handleSubmit(event) {
             lastname: data.entries().lastname,
             phone: data.entries().phone,
             iron_count: data.entries().iron_count,
+            weight: data.entries().weight,
             age: data.entries().age
         },
         conditions: ""

@@ -34,6 +34,23 @@ function sendSubmitRequest(){
 
   });
 }
+
+function insertDonor(jsonOb){
+  var insertRequest = "INSERT INTO " + jsonOb[data][table] + 
+  "(DONOR_ID, PHONE_NUMBER, IRON_COUNT, FIRST_NAME, LAST_NAME, WEIGHT, AGE) VALUES " +
++ "(NULL, " + jsonOb[data][phone] + ", " + jsonOb[data][iron_count] + ", " + jsonOb[data][firstname] + ", " + jsonOb[data][lastname]
++ ", " + jsonOb[data][weight] + ", " + jsonOb[data][age];
+
+console.log(insertRequest);
+
+  con.query(insertRequest, function (err, result) {
+    if (err) throw err;
+    console.log("Result: " + JSON.stringify(result));
+    var query = JSON.parse(JSON.stringify(result));
+  });
+
+}
+
 sendSubmitRequest();
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
@@ -43,3 +60,4 @@ wss.on('connection', function connection(ws) {
       console.log('received: %s', data);
     });
   });
+
