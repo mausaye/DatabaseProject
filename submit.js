@@ -9,7 +9,7 @@ function handleSubmit(event) {
         type: "INSERT",
         data: { 
             table: "DONOR",
-            firstname: data.entries().firstname,
+            firstname: data.entries()[firstname],
             lastname: data.entries().lastname,
             phone: data.entries().phone,
             iron_count: data.entries().iron_count,
@@ -19,7 +19,9 @@ function handleSubmit(event) {
         conditions: ""
        
 }
-
+console.log({
+    jsonOb
+});
 
     console.log({
         jsonOb
