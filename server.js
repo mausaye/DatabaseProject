@@ -3,7 +3,12 @@ var mysql= require('mysql')
 var ws = require('ws')
 
 const server = http.createServer();
-const wss = new ws.WebSocketServer({ noServer: true });
+const wss = new ws.WebSocket.Server({ port:8080});
+
+wss.on('connection', () => {
+  console.log("YAY!");
+});
+
 
 // SQL Connection
 var con = mysql.createConnection({

@@ -1,13 +1,13 @@
 function handleSubmit(event) {
 
-    connection.onopen = function(){
+   // connection.onopen = function(){
         /*Send a small message to the console once the connection is established */
-            console.log('Connection open!');
-        }
+     //       console.log('Connection open!');
+       // }
 
-        connection.onerror = function(error){
-            console.log('Error detected: ' + error);
-        }
+        //connection.onerror = function(error){
+          //  console.log('Error detected: ' + error);
+       // }
 
 
     //alert("hi"); ---checked this to get data
@@ -38,12 +38,6 @@ console.log({
         jsonOb
     });
 }
-
-
-                                
-
-
-
 
 
 const form = document.querySelector('form');
