@@ -40,13 +40,7 @@ function sendSubmitRequest(){
   });
 }
 
-function insertDonor(jsonOb){
-  var insertRequest = "INSERT INTO " + jsonOb[data][table] + 
-  "(DONOR_ID, PHONE_NUMBER, IRON_COUNT, FIRST_NAME, LAST_NAME, WEIGHT, AGE) VALUES " +
-+ "(NULL, " + jsonOb[data][phone] + ", " + jsonOb[data][iron_count] + ", " + jsonOb[data][firstname] + ", " + jsonOb[data][lastname]
-+ ", " + jsonOb[data][weight] + ", " + jsonOb[data][age];
 
-console.log(insertRequest);
 
   con.query(insertRequest, function (err, result) {
     if (err) throw err;
@@ -59,7 +53,6 @@ console.log(insertRequest);
 
 
 
-sendSubmitRequest();
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
     console.log("this is not a variable");
@@ -68,10 +61,43 @@ wss.on('connection', function connection(ws) {
 	  let obj = JSON.parse(data)
 	  console.log(obj);
       //console.log('received: bye', data.toString());
-    });
-  ws.on('insertDonor', function message(data) {
-       console.log('received:hi ', data.toString());
+    var type = data["type"];
+
+    switch(type){
+      case "SELECT":
+        break;
+         
+      case "INSERT":
+        if(data[data][table] == "DONOR"){
+          insertDonor(data);
+        }
+        break;
+
+      case "DELETE":
+        break;
+    }
+
+
+      console.log('received:', data);
   });
 
   });
+
+
+  function insertDonor(jsonOb){
+    var insertRequest = "INSERT INTO " + jsonOb[data][table] + 
+    "(DONOR_ID, PHONE_NUMBER, IRON_COUNT, FIRST_NAME, LAST_NAME, WEIGHT, AGE) VALUES " +
+  + "(NULL, " + jsonOb[data][phone] + ", " + jsonOb[data][iron_count] + ", " + jsonOb[data][firstname] + ", " + jsonOb[data][lastname]
+  + ", " + jsonOb[data][weight] + ", " + jsonOb[data][age];
+  
+  console.log(insertRequest);
+  
+    con.query(insertRequest, function (err, result) {
+      if (err) throw err;
+      console.log("Result: " + JSON.stringify(result));
+      var query = JSON.parse(JSON.stringify(result));
+    });
+  
+  }
+  
 
