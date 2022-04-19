@@ -32,12 +32,12 @@ function handleSubmit(event) {
         type: "INSERT",
         data: { 
             table: "DONOR",
-            firstname: data.entries().firstname,
-            lastname: data.entries().lastname,
-            phone: data.entries().phone,
-            iron_count: data.entries().iron_count,
-            weight: data.entries().weight,
-            age: data.entries().age
+            firstname: value['firstname'],
+            lastname: value['lastname'],
+            phone: value['phone'],
+            iron_count: value['iron_count'],
+            weight: value['weight'],
+	    age: value['age'] 
         },
         conditions: ""
 }
