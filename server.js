@@ -1,10 +1,8 @@
 var http = require('http');
 var mysql= require('mysql')
 var ws = require('ws')
-
 const server = http.createServer();
-const wss = new ws.WebSocket.Server({ port:8080});
-
+const wss = new ws.WebSocketServer({ port: 8080 });
 wss.on('connection', () => {
   console.log("YAY!");
 });

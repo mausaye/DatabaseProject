@@ -12,7 +12,7 @@ function handleSubmit(event) {
 
     //alert("hi"); ---checked this to get data
     
-    var connection = new WebSocket('ws://127.0.0.1:1337');
+    var connection = new WebSocket('ws://54.152.163.233:8080');
 
     connection.onopen = function () {
       // connection is opened and ready to use
