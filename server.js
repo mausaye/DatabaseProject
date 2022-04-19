@@ -37,7 +37,7 @@ wss.on('connection', function connection(ws) {
     switch(type){
       case "SELECT":
         if(obj["data"]["table"] == "BLOOD"){
-          requestBlood(obj);
+          requestBlood(obj, ws);
         }
         break;
          
@@ -79,7 +79,7 @@ wss.on('connection', function connection(ws) {
   }
 
   // Submit query request to find blood of the same type
-function requestBlood(jsonOb){
+function requestBlood(jsonOb, ws){
 
     var selectRequest = jsonOb['type'] + " BLOOD_ID, BLOOD_TYPE, RH_FACTOR, DATE_COLLECTED FROM " + jsonOb.data.table
                            + " WHERE BLOOD_TYPE = \"" + jsonOb['data']['blood_type'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] + "\";";
@@ -90,7 +90,7 @@ function requestBlood(jsonOb){
         var query = JSON.parse(JSON.stringify(result));
 
         console.log(query);
-	ws.send(JSON.stringify(query));
+	    ws.send(JSON.stringify(query));
     });
 }
 
