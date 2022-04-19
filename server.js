@@ -3,6 +3,7 @@ var mysql= require('mysql')
 var ws = require('ws')
 const server = http.createServer();
 const wss = new ws.WebSocketServer({ port: 8080 });
+
 wss.on('connection', () => {
   console.log("YAY!");
 });
@@ -20,41 +21,25 @@ var con = mysql.createConnection({
 
 con.connect(function (err) {
     if (err) throw err;
-    console.log("Connected!");
+    console.log("SQL Connected!");
 
 });
 
-// Submit query request to find blood of the same type
-function sendSubmitRequest(){
-  //  if (jsonOb.type != "SELECT") console.error(jsonOb.type + " instead of SELECT.");
-
-    //var selectRequest = jsonOb[type] + "  BLOOD_ID, BLOOD_TYPE, DATE_COLLECTED FROM " + jsonOb.data.table
-      //                      + "WHERE BLOOD_TYPE = " + jsonOb[data][blood] + " AND RH_FACTOR = " + jsonOb[data][rh];
-      var selectRequest =  "SELECT* FROM BLOOD;";
-
-    con.query(selectRequest, function (err, result) {
-        if (err) throw err;
-        console.log("Result: " + JSON.stringify(result));
-        var query = JSON.parse(JSON.stringify(result));
-
-  });
-}
-
-
-
-
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
-    console.log("this is not a variable");
+  console.log("Web socket server connected");
 
   ws.on('message', function message(data) {
 	  let obj = JSON.parse(data)
 	  console.log(obj);
-      //console.log('received: bye', data.toString());
+     
     var type = data["type"];
 
     switch(type){
       case "SELECT":
+        if(data[data][table] == "BLOOD"){
+          requestBlood(data);
+        }
         break;
          
       case "INSERT":
@@ -71,7 +56,7 @@ wss.on('connection', function connection(ws) {
       console.log('received:', data);
   });
 
-  });
+});
 
 
   function insertDonor(jsonOb){
@@ -89,5 +74,24 @@ wss.on('connection', function connection(ws) {
     });
   
   }
+
+  // Submit query request to find blood of the same type
+function requestBlood(jsonOb){
+  //  if (jsonOb.type != "SELECT") console.error(jsonOb.type + " instead of SELECT.");
+
+    //var selectRequest = jsonOb[type] + "  BLOOD_ID, BLOOD_TYPE, DATE_COLLECTED FROM " + jsonOb.data.table
+      //                      + "WHERE BLOOD_TYPE = " + jsonOb[data][blood] + " AND RH_FACTOR = " + jsonOb[data][rh];
+      var selectRequest =  "SELECT* FROM BLOOD;";
+
+    con.query(selectRequest, function (err, result) {
+        if (err) throw err;
+        console.log("Result: " + JSON.stringify(result));
+        var query = JSON.parse(JSON.stringify(result));
+
+  });
+
+}
+
   
+
 
