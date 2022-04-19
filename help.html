@@ -83,10 +83,12 @@
                                     data: { 
                                         table: "BLOOD",
                                         blood_type: value['blood'],
-                                        rh: value['firstname']
+                                        rh: value['rh']
                                     },
                                     conditions: ""
                             }
+
+                            console.log({ jsonOb });
                             var ws = new WebSocket("ws://54.152.163.233:8080");
 
                             connection.onopen = function(){
