@@ -5,7 +5,7 @@ const server = http.createServer();
 const wss = new ws.WebSocketServer({ port: 8080 });
 
 wss.on('connection', () => {
-  console.log("YAY!");
+  console.log("WebSocketServer connected!");
 });
 
 
@@ -74,7 +74,6 @@ wss.on('connection', function connection(ws) {
       console.log("Result: " + JSON.stringify(result));
       var query = JSON.parse(JSON.stringify(result));
 
-      ws.send(query);
     });
   
   }
@@ -91,8 +90,8 @@ function requestBlood(jsonOb){
         var query = JSON.parse(JSON.stringify(result));
 
         console.log(query);
-
-  });
+	ws.send(JSON.stringify(query));
+    });
 }
 
   

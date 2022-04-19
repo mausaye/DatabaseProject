@@ -24,14 +24,14 @@
 
 <script>
     function createTable(){
-        var webSocket = new WebSocket("ws://54.152.163.233:8080");
+        var webSocket = new WebSocket('ws://54.152.163.233:8080');
 
         webSocket.onmessage = function (event) {
             console.log(event.data);
         }
 
         var queries = event.data;
-
+console.log(queries);
 
     // attributes
     var attributes = [];
