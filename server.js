@@ -50,8 +50,6 @@ wss.on('connection', function connection(ws) {
       case "DELETE":
         break;
     }
-
-
       console.log('received:', obj);
   });
 
@@ -81,16 +79,16 @@ wss.on('connection', function connection(ws) {
 
   // Submit query request to find blood of the same type
 function requestBlood(jsonOb){
-  //  if (jsonOb.type != "SELECT") console.error(jsonOb.type + " instead of SELECT.");
 
-    //var selectRequest = jsonOb[type] + "  BLOOD_ID, BLOOD_TYPE, DATE_COLLECTED FROM " + jsonOb.data.table
-      //                      + "WHERE BLOOD_TYPE = " + jsonOb[data][blood] + " AND RH_FACTOR = " + jsonOb[data][rh];
-      var selectRequest =  "SELECT* FROM BLOOD;";
-
+    var selectRequest = jsonOb[type] + " BLOOD_ID, BLOOD_TYPE, DATE_COLLECTED FROM " + jsonOb.data.table
+                           + "WHERE BLOOD_TYPE = \"" + jsonOb[data][blood] + "\" AND RH_FACTOR = \"" + jsonOb[data][rh] + "\";";
+    
     con.query(selectRequest, function (err, result) {
         if (err) throw err;
-        console.log("Result: " + JSON.stringify(result));
+        console.log("QUERY BLOOD: " + JSON.stringify(result));
         var query = JSON.parse(JSON.stringify(result));
+
+        console.log(query);
 
   });
 
