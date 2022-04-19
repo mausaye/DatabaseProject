@@ -56,9 +56,6 @@ console.log(insertRequest);
 
 }
 
-ws.on('insertDonor', function message(data) {
-  console.log('received: ', data);
-});
 
 
 
@@ -68,8 +65,13 @@ wss.on('connection', function connection(ws) {
     console.log("this is not a variable");
 
   ws.on('message', function message(data) {
-      console.log('received: %s', data);
+	  let obj = JSON.parse(data)
+	  console.log(obj);
+      //console.log('received: bye', data.toString());
     });
+  ws.on('insertDonor', function message(data) {
+       console.log('received:hi ', data.toString());
+  });
 
   });
 
