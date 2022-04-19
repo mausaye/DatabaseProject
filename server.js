@@ -73,6 +73,8 @@ wss.on('connection', function connection(ws) {
       if (err) throw err;
       console.log("Result: " + JSON.stringify(result));
       var query = JSON.parse(JSON.stringify(result));
+
+      ws.send(query);
     });
   
   }
