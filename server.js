@@ -43,11 +43,25 @@ function sendSubmitRequest(){
 
 
 
+  con.query(insertRequest, function (err, result) {
+    if (err) throw err;
+    console.log("Result: " + JSON.stringify(result));
+    var query = JSON.parse(JSON.stringify(result));
+  });
+
+}
+
+
+
+
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
     console.log("this is not a variable");
 
   ws.on('message', function message(data) {
+	  let obj = JSON.parse(data)
+	  console.log(obj);
+      //console.log('received: bye', data.toString());
     var type = data["type"];
 
     switch(type){
@@ -66,7 +80,7 @@ wss.on('connection', function connection(ws) {
 
 
       console.log('received:', data);
-    });
+  });
 
   });
 

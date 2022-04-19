@@ -43,6 +43,7 @@ function handleSubmit(event) {
 }
 
 connection.addEventListener('open', function (event) {
+    connection.send(JSON.stringify(jsonOb))
     connection.send(jsonOb);
 });
 
