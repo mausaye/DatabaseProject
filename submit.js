@@ -42,7 +42,9 @@ function handleSubmit(event) {
         conditions: ""
 }
 
-connection.send(jsonOb);
+connection.addEventListener('open', function (event) {
+    connection.send('insertDonor', jsonOb);
+});
 
 console.log({value});
 

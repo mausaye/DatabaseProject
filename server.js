@@ -7,6 +7,8 @@ wss.on('connection', () => {
   console.log("YAY!");
 });
 
+wss.li
+
 
 // SQL Connection
 var con = mysql.createConnection({
@@ -54,6 +56,12 @@ console.log(insertRequest);
 
 }
 
+ws.on('insertDonor', function message(data) {
+  console.log('received: ', data);
+});
+
+
+
 sendSubmitRequest();
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
@@ -62,5 +70,6 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function message(data) {
       console.log('received: %s', data);
     });
+
   });
 
