@@ -80,8 +80,8 @@ wss.on('connection', function connection(ws) {
   // Submit query request to find blood of the same type
 function requestBlood(jsonOb){
 
-    var selectRequest = jsonOb['type'] + " BLOOD_ID, BLOOD_TYPE, DATE_COLLECTED FROM " + jsonOb.data.table
-                           + "WHERE BLOOD_TYPE = \"" + jsonOb['data']['blood'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] + "\";";
+    var selectRequest = jsonOb['type'] + " BLOOD_ID, BLOOD_TYPE, RH_FACTOR, DATE_COLLECTED FROM " + jsonOb.data.table
+                           + " WHERE BLOOD_TYPE = \"" + jsonOb['data']['blood_type'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] + "\";";
     
     con.query(selectRequest, function (err, result) {
         if (err) throw err;
@@ -91,7 +91,6 @@ function requestBlood(jsonOb){
         console.log(query);
 
   });
-
 }
 
   
