@@ -40,15 +40,14 @@ function handleSubmit(event) {
 	    age: value['age '] 
         },
         conditions: ""
-       
 }
-console.log({
-    value
-});
 
-    console.log({
-        jsonOb
-    });
+connection.send(jsonOb);
+
+console.log({value});
+
+console.log({jsonOb});
+
 }
 
 
