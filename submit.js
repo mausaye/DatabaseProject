@@ -11,6 +11,18 @@ function handleSubmit(event) {
 
 
     //alert("hi"); ---checked this to get data
+    
+    var connection = new WebSocket('ws://127.0.0.1:1337');
+
+    connection.onopen = function () {
+      // connection is opened and ready to use
+      console.log("hi there");
+    };
+  
+    connection.onerror = function (error) {
+      // an error occurred when sending/receiving data
+    };
+    
     event.preventDefault();
 
     const data = new FormData(event.target);
