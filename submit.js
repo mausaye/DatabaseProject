@@ -33,11 +33,11 @@ function handleSubmit(event) {
         data: { 
             table: "DONOR",
             firstname: value['firstname'],
-            lastname: value['lastname'],
-            phone: value['phone'],
-            iron_count: value['iron_count'],
-            weight: value['weight'],
-	    age: value['age'] 
+            lastname: value['lastname '],
+            phone: value['phone '],
+            iron_count: value['iron_count '],
+            weight: value['weight '],
+	    age: value['age '] 
         },
         conditions: ""
        
