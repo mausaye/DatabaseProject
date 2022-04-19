@@ -42,16 +42,6 @@ function sendSubmitRequest(){
 
 
 
-  con.query(insertRequest, function (err, result) {
-    if (err) throw err;
-    console.log("Result: " + JSON.stringify(result));
-    var query = JSON.parse(JSON.stringify(result));
-  });
-
-}
-
-
-
 
 // WebSocket Server connection
 wss.on('connection', function connection(ws) {
