@@ -100,10 +100,11 @@
                             connection.onerror = function(error){
                                 console.log('Error detected: ' + error);
                             }
-				connection.addEventListener('open', function (event) {
-				 connection.send(JSON.stringify(jsonOb));
-				});
-				location.href = "viewDonors.html"
+				            connection.addEventListener('open', function (event) {
+				                connection.send(JSON.stringify(jsonOb));
+				            });
+                            
+				            location.href = "viewDonors.html"
                             }
 
 
