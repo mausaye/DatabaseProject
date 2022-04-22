@@ -8,6 +8,7 @@
     <link rel="stylesheet" href='help.css'>
     <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="viewDonor.js"></script>
 </head>
 <title>Fill Out Request Information </title>
 
@@ -87,6 +88,7 @@
                                     },
                                     conditions: ""
                             	}
+
                             var connection = new WebSocket("ws://54.152.163.233:8080");
                             
 
@@ -103,8 +105,15 @@
 				            connection.addEventListener('open', function (event) {
 				                connection.send(JSON.stringify(jsonOb));
 				            });
-                            
-				            location.href = "viewDonors.html"
+
+                            connection.onmessage = function (event){
+                                console.log("message recieved");
+                                console.log(event.data);
+                                createTable(event.data);
+
+                            }
+                           
+   			                location.href = "viewDonors.html"
                             }
 
 
