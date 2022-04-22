@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href='Admin.css'>
+    <link rel="stylesheet" href='viewDonor.css'>
     <link rel="icon" href='./Images/bb_logo(black).png' type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
@@ -13,41 +13,11 @@
             margin-left: 10;
             margin-right: auto;
         }
-
-      
-        header, tr, p {
-            font:14px Verdana;
-            z-index: 4;
-           
-           
-        }
-       
-        table, th, tr, td 
-        {
-            border: solid 1px #DDD;
-            border-collapse: collapse;
-            padding: 2px 3px;
-            text-align: center;
-            z-index: 4;
-            margin:auto;
-         
-        }
-        header {
-            font-weight:bold;
-            z-index: 4;
-           
-        }
-
-        .tablequery{
-            margin:auto;
-            margin-top: 20%;
-        }
-   
     </style>
 </head>
 <title>View Donor List</title>
 
-<body onload="createTable()">
+<body>
     <header>
         <nav>
             <div class="header-logo"><img src="./Images/bb_logo(black).png"></div>
@@ -59,109 +29,84 @@
         </nav>
     </header>
 
-    <div class="inner">
-       
-        
-        <div class="tablequery">
-            <p id="Queries"> hi there</p>
-        </div>
-        
-        
+    <div class="donorList">
+        <h1> List of matching donors:</h1><br>
+        <br>
+        <table class="center">
+            <br>
+            <tr>
+                <th>Donor ID</th>
+                <th>Blood Type</th>
+                <th>Iron Count</th>
+                <th>Weight</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>000001</td>
+                <td>AB+</td>
+                <td>100</td>
+                <td>145</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>000043</td>
+                <td>O-</td>
+                <td>120</td>
+                <td>169</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>000135</td>
+                <td>AB+</td>
+                <td>110</td>
+                <td>177</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>000201</td>
+                <td>AB+</td>
+                <td>101</td>
+                <td>130</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>000100</td>
+                <td>AB+</td>
+                <td>103</td>
+                <td>142</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>00420</td>
+                <td>AB+</td>
+                <td>120</td>
+                <td>125</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>000301</td>
+                <td>A+</td>
+                <td>114</td>
+                <td>137</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>000241</td>
+                <td>B+</td>
+                <td>109</td>
+                <td>131</td>
+                <td>21</td>
+            </tr>
+            <tr>
+                <td>000311</td>
+                <td>B-</td>
+                <td>117</td>
+                <td>158</td>
+                <td>18</td>
+            </tr>
+        </table>
     </div>
-    <script>
-        function createTable(){
-           var webSocket = new WebSocket('ws://54.152.163.233:8080');
-    
-            webSocket.onmessage = function (event) {
-        	console.log("message recieved");
-        	console.log(event.data);
-            }
-    
-           // var queries = event.data;
-    //console.log(queries);
-            var queries = [
-        {
-            color: "red",
-            color2: "red",
-            value2: "#f00",
-            value: "#f00"
-        },
-        {
-            color: "green",
-            color2: "red",
-            value2: "#f00",
-            value: "#0f0"
-        },
-        {
-            color: "blue",
-            color2: "red",
-            value2: "#f00",
-            value: "#00f"
-        },
-        {
-            color: "cyan",
-            color: "red",
-            value2: "#f00",
-            value: "#0ff"
-        },
-        {
-            color: "magenta",
-            color2: "red",
-            value2: "#f00",
-            value: "#f0f"
-        },
-        {
-            color: "yellow",
-            color2: "red",
-            value2: "#f00",
-            value: "#ff0"
-        },
-        {
-            color: "black",
-            color2: "red",
-            value2: "#f00",
-            value: "#000"
-        }
-    ]
-            
-            // attributes
-        var attributes = [];
-        for (var i = 0; i < queries.length; i++){
-            for(var key in queries[i]){
-                if(attributes.indexOf(key) === -1){
-                    attributes.push(key);
-                }
-            }
-        }
-    
-        var table = document.createElement("table");
-    
-        var tablerow = table.insertRow(-1);
-    
-        
-        for(var x = 0; x < attributes.length; x++){
-                var cell = tablerow.insertCell(-1);
-                cell.innerHTML = [attributes[x]];
-                
-        }
-        
-    
-        for(var k = 0; k < queries.length; k++){
-            tablerow = table.insertRow(-1);
-    
-            for(var x = 0; x < attributes.length; x++){
-                var cell = tablerow.insertCell(-1);
-                cell.innerHTML = queries[k][attributes[x]];
-            }
-    
-        }
-    
-        var container = document.getElementById("Queries");
-        container.innerHTML ="";
-        container.appendChild(table);
-        }
-    </script>
-    <script src="./Admin.js"></script>
+    <script src="./viewDonors.js"></script>
 </body>
 
 </html>
