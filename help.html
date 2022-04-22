@@ -107,19 +107,19 @@
 				            });
 
                             connection.onmessage = function (event){
-                                 localStorage.setItem('tablejson', event.data);
+                                 sessionStorage.setItem('tablejson', event.data);
 				    console.log("message recieved");
                                 console.log(event.data);
 
 				    console.log("event: " + event.data);
 
-				    console.log(localStorage.getItem('tablejson'));
+				    console.log("session: " + sessionStorage.getItem('tablejson'));
                             }
-                           
+                   //         location.href = "viewDonors.html";
 				setTimeout( function() {
-					location.href = "viewDonors.html";}, 5000);
-                            }
-
+				location.href = "viewDonors.html";}, 200);
+                       
+}
 
                                 const form = document.querySelector('form');
                                 form.addEventListener('submit', handleSubmit);
