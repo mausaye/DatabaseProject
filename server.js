@@ -39,7 +39,8 @@ wss.on('connection', function connection(ws) {
         if(obj["data"]["table"] == "BLOOD"){
           requestBlood(obj, ws);
         } else if (obj["data"]["table"] == "DONATES"){
-          queryDonorsBlood(jsonOb, ws);
+          queryDonorsBlood(obj, ws);
+		console.log("DONOR QUERY FUNCTION CALLED");
         }
         break;
          
@@ -84,7 +85,7 @@ wss.on('connection', function connection(ws) {
                       +  jsonOb['data']['blood_type'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] 
                       + "\" AND DONATES.BLOOD_ID = BLOOD.BLOOD_ID AND DONOR.DONOR_ID = DONATES.DONOR_ID;";
 
-                      con.query(selectRequest, function (err, result) {
+                      con.query(request, function (err, result) {
                         if (err) throw err;
                         console.log("QUERY DONOR BLOOD TYPES: " + JSON.stringify(result));
                         var query = JSON.parse(JSON.stringify(result));
