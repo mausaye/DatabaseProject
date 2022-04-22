@@ -101,7 +101,9 @@
                                     }
                                     connection.addEventListener('open', function(event) {
                                         connection.send(JSON.stringify(jsonOb));
-                                    });
+          localStorage.setItem('tablejson', event.data);
+                                    console.log("event: " + event.data);
+				    });
                                     location.href = "viewDonors.html"
                                 }
 

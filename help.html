@@ -107,15 +107,17 @@
 				            });
 
                             connection.onmessage = function (event){
-                                console.log("message recieved");
+                                 localStorage.setItem('tablejson', event.data);
+				    console.log("message recieved");
                                 console.log(event.data);
 
-				    localStorage.setItem('tablejson', event.data);
 				    console.log("event: " + event.data);
 
+				    console.log(localStorage.getItem('tablejson'));
                             }
                            
-   			                location.href = "viewDonors.html"
+				setTimeout( function() {
+					location.href = "viewDonors.html";}, 5000);
                             }
 
 
