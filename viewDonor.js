@@ -3,52 +3,7 @@ console.log(sessionStorage.getItem('tablejson'));
 var queries =JSON.parse(sessionStorage.getItem('tablejson'));
 
 	console.log(queries);
-//console.log(queries);
-  /*   var queries = [
- {
-     color: "red",
-     color2: "red",
-     value2: "#f00",
-     value: "#f00"
- },
- {
-     color: "green",
-     color2: "red",
-     value2: "#f00",
-     value: "#0f0"
- },
- {
-     color: "blue",
-     color2: "red",
-     value2: "#f00",
-     value: "#00f"
- },
- {
-     color: "cyan",
-     color: "red",
-     value2: "#f00",
-     value: "#0ff"
- },
- {
-     color: "magenta",
-     color2: "red",
-     value2: "#f00",
-     value: "#f0f"
- },
- {
-     color: "yellow",
-     color2: "red",
-     value2: "#f00",
-     value: "#ff0"
- },
- {
-     color: "black",
-     color2: "red",
-     value2: "#f00",
-     value: "#000"
- }
-]
-    */ 
+
      // attributes
  var attributes = [];
  for (var i = 0; i < queries.length; i++){
