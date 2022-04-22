@@ -1,14 +1,10 @@
-function createTable(queries){
-    var webSocket = new WebSocket('ws://54.152.163.233:8080');
+function createTable(){
+console.log(localStorage.getItem('tablejson'));
+var queries =JSON.parse(localStorage.getItem('tablejson'));
 
-     webSocket.onmessage = function (event) {
-         console.log("message recieved");
-         console.log(event.data);
-     }
-
-    // var queries = event.data;
+	console.log(queries);
 //console.log(queries);
-     var queries = [
+  /*   var queries = [
  {
      color: "red",
      color2: "red",
@@ -52,7 +48,7 @@ function createTable(queries){
      value: "#000"
  }
 ]
-     
+    */ 
      // attributes
  var attributes = [];
  for (var i = 0; i < queries.length; i++){

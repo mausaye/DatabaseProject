@@ -109,7 +109,9 @@
                             connection.onmessage = function (event){
                                 console.log("message recieved");
                                 console.log(event.data);
-                                createTable(event.data);
+
+				    localStorage.setItem('tablejson', event.data);
+				    console.log("event: " + event.data);
 
                             }
                            
