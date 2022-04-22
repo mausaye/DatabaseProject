@@ -38,6 +38,8 @@ wss.on('connection', function connection(ws) {
       case "SELECT":
         if(obj["data"]["table"] == "BLOOD"){
           requestBlood(obj, ws);
+        } else if (obj["data"]["table"] == "DONATES"){
+          queryDonorsBlood(jsonOb, ws);
         }
         break;
          
@@ -76,6 +78,20 @@ wss.on('connection', function connection(ws) {
 
     });
   
+  }
+  function queryDonorsBlood(jsonOb, ws){
+    var request = jsonOb['type'] + " DONOR_ID, BLOOD_TYPE, RH_FACTOR FROM BLOOD, DONATES, DONOR WHERE BLOOD_TYPE = \""
+                      +  jsonOb['data']['blood_type'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] 
+                      + "\" AND DONATES.BLOOD_ID = BLOOD.BLOOD_ID AND DONOR.DONOR_ID = DONATES.DONOR_ID;";
+
+                      con.query(selectRequest, function (err, result) {
+                        if (err) throw err;
+                        console.log("QUERY DONOR BLOOD TYPES: " + JSON.stringify(result));
+                        var query = JSON.parse(JSON.stringify(result));
+                
+                        console.log(query);
+                        ws.send(JSON.stringify(query));
+                    });
   }
 
   // Submit query request to find blood of the same type

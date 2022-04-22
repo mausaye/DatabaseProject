@@ -64,7 +64,6 @@
                             <script>
                                 function handleSubmit(event) {
 
-                                    //alert("hi"); ---checked this to get data
                                     event.preventDefault();
 
                                     const data = new FormData(event.target);
@@ -78,13 +77,12 @@
                                     const jsonOb = {
                                         type: "SELECT",
                                         data: { 
-                                            table: "BLOOD",
+                                            table: "DONATES",
                                             blood_type: value['blood'],
                                             rh: value['rh']
                                         },
                                         conditions: ""
                             	    }
-
 
                                     var connection = new WebSocket("ws://54.152.163.233:8080");
 
@@ -102,14 +100,20 @@
                                     }
                                     connection.addEventListener('open', function(event) {
                                         connection.send(JSON.stringify(jsonOb));
+
                                     });
 
-                                    location.href = "viewDonors.html"
-                                }
+                                sessionStorage.setItem('tablejson', event.data);
+                                
+		
+                                 setTimeout( function() {
+                                	location.href = "viewDonors.html";}, 200);
 
-
+				                }
+			
                                 const form = document.querySelector('form');
                                 form.addEventListener('submit', handleSubmit);
+
                             </script>
 
                         </div>

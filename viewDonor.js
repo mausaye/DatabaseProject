@@ -1,6 +1,6 @@
 function createTable(){
-console.log(localStorage.getItem('tablejson'));
-var queries =JSON.parse(localStorage.getItem('tablejson'));
+console.log(sessionStorage.getItem('tablejson'));
+var queries =JSON.parse(sessionStorage.getItem('tablejson'));
 
 	console.log(queries);
 //console.log(queries);
