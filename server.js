@@ -81,10 +81,10 @@ wss.on('connection', function connection(ws) {
   
   }
   function queryDonorsBlood(jsonOb, ws){
-    var request = jsonOb['type'] + " DONOR_ID, BLOOD_TYPE, RH_FACTOR FROM BLOOD, DONATES, DONOR WHERE BLOOD_TYPE = \""
+    var request = jsonOb['type'] + " DONOR. DONOR_ID, BLOOD. BLOOD_TYPE,  BLOOD.RH_FACTOR FROM BLOOD, DONATES, DONOR WHERE BLOOD_TYPE = \""
                       +  jsonOb['data']['blood_type'] + "\" AND RH_FACTOR = \"" + jsonOb['data']['rh'] 
                       + "\" AND DONATES.BLOOD_ID = BLOOD.BLOOD_ID AND DONOR.DONOR_ID = DONATES.DONOR_ID;";
-
+console.log(request);
                       con.query(request, function (err, result) {
                         if (err) throw err;
                         console.log("QUERY DONOR BLOOD TYPES: " + JSON.stringify(result));
